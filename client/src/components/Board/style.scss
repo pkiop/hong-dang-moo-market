@@ -1,0 +1,10 @@
+.board {
+  background-color: gray;
+  display: flex;
+
+  .picture > img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+  }
+}
