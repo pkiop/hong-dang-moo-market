@@ -1,8 +1,16 @@
 import './style.scss';
 
-function Board({ title, category, time, money, user, imageLink }) {
+function Board({
+  title,
+  category,
+  time,
+  money,
+  user,
+  imageLink,
+  setBoardData,
+}) {
   return (
-    <div className="board">
+    <div className="board" onClick={setBoardData}>
       <div className="picture">
         <img alt={title} src={imageLink} />
       </div>
