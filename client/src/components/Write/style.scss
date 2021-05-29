@@ -1,0 +1,41 @@
+.write {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+
+  & > div {
+    display: block;
+  }
+  background-color: green;
+}
+
+body {
+  margin: 0;
+}
+
+.fixed {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+}
+
+.item {
+  position: relative;
+  margin-top: 40px;
+  margin-left: 40px;
+  width: 200px;
+  height: 300px;
+  background: yellow;
+}
+
+.A {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.B {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
