@@ -1,6 +1,6 @@
 const BoardModel = require('../../models/board');
 
-exports.listBoard = async () => {
+const listBoard = async () => {
   try {
     const boards = await BoardModel.find({}).exec();
     return boards;
@@ -10,7 +10,7 @@ exports.listBoard = async () => {
   }
 };
 
-exports.getBoardById = async (boardId) => {
+const getBoardById = async (boardId) => {
   try {
     const board = await BoardModel.findOne({ id: boardId }).exec();
     return board;
@@ -20,7 +20,7 @@ exports.getBoardById = async (boardId) => {
   }
 };
 
-exports.addBoard = async ({ boardId, title, content }) => {
+const addBoard = async ({ boardId, title, content }) => {
   try {
     await BoardModel.create({ id: boardId, title, content }).exec();
   } catch (err) {
@@ -29,7 +29,7 @@ exports.addBoard = async ({ boardId, title, content }) => {
   }
 };
 
-exports.updateBoard = async ({ boardId, title, content }) => {
+const updateBoard = async ({ boardId, title, content }) => {
   try {
     const query = { id: boardId };
     await BoardModel.updateOne(query, { title, content }).exec();
@@ -39,7 +39,7 @@ exports.updateBoard = async ({ boardId, title, content }) => {
   }
 };
 
-exports.deleteBoard = async ({ boardId }) => {
+const deleteBoard = async ({ boardId }) => {
   try {
     const query = { id: boardId };
     await BoardModel.deleteOne(query).exec();
@@ -47,4 +47,12 @@ exports.deleteBoard = async ({ boardId }) => {
     console.error(err);
     return {};
   }
+};
+
+module.exports = {
+  listBoard,
+  getBoardById,
+  addBoard,
+  updateBoard,
+  deleteBoard,
 };
