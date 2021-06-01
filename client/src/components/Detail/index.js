@@ -17,7 +17,7 @@ function Detail({ boardData, setTestData, setBoardData, setVisible }) {
   };
 
   return (
-    <div>
+    <div className="board-components-wrapper">
       <Board
         title={boardData.title}
         category={boardData.category}

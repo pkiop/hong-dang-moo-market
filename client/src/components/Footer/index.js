@@ -3,7 +3,15 @@ import './style.scss';
 
 function Footer({ buttonList }) {
   const Buttons = buttonList.map((el) => {
-    return <button key={el}>{el}</button>;
+    return (
+      <button
+        className="footerButton"
+        key={el.title}
+        style={{ backgroundColor: el.color }}
+      >
+        {el.title}
+      </button>
+    );
   });
   return <div className="footer">{Buttons}</div>;
 }

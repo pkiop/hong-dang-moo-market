@@ -1,10 +1,44 @@
 .board {
-  background-color: gray;
+  background-color: #c4c4c4;
   display: flex;
+  align-items: center;
+  margin: 20px 0;
+  height: 100px;
 
-  .picture > img {
-    width: 90px;
-    height: 90px;
-    border-radius: 12px;
+  font-size: 16px;
+
+  border-radius: 16px;
+
+  .picture {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    > img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+    }
+  }
+
+  .contents {
+    flex-grow: 9;
+    padding: 0 30px 0 0;
+    .title {
+      font-size: 20px;
+    }
+
+    .category-time {
+      display: flex;
+      font-size: 12px;
+      justify-content: space-between;
+    }
+    .money-user {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
   }
 }

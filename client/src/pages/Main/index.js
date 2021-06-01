@@ -1,4 +1,5 @@
 import Board from '../../components/Board';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Write from '../../components/Write';
 import Detail from '../../components/Detail';
@@ -63,11 +64,16 @@ function Main() {
   });
 
   const [visible, setVisible] = useState(false);
+  const buttonList = [
+    { title: '홈', color: 'red' },
+    { title: '검색', color: 'blue' },
+    { title: '내글', color: 'green' },
+  ];
   return (
     <div>
-      <div>홍당무마켓</div>
+      <Header />
       {boardData === null ? (
-        BoardComponents
+        <div className="board-components-wrapper">{BoardComponents}</div>
       ) : (
         <Detail
           boardData={boardData}
@@ -77,7 +83,7 @@ function Main() {
         />
       )}
 
-      <Footer buttonList={['버튼1111', '버튼112', '버튼113']} />
+      <Footer buttonList={buttonList} />
       <button onClick={() => setVisible((state) => !state)}>+</button>
       <button className="closeButton" onClick={() => setVisible(!visible)}>
         -
