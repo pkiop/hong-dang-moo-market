@@ -1,51 +1,33 @@
-import Board from '../../components/Board';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Write from '../../components/Write';
-import Detail from '../../components/Detail';
+import Board from "../../components/Board";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Write from "../../components/Write";
+import Detail from "../../components/Detail";
 
-import './style.scss';
+import "./style.scss";
 
-import { useState } from 'react';
-
-const imageLink =
-  'http://itimg.chosun.com/sitedata/image/202001/14/2020011400634_0.jpg';
-const initTestData = [
-  {
-    id: 1,
-    title: '1',
-    category: 'A',
-    time: 13,
-    money: 100000,
-    user: 'user1',
-    imageLink: imageLink,
-    detailText: '첫번째 상품입니다.',
-  },
-  {
-    id: 2,
-    title: '2',
-    category: 'A',
-    time: 13,
-    money: 100000,
-    user: 'user1',
-    imageLink: imageLink,
-    detailText: '두번째 상품입니다.',
-  },
-  {
-    id: 3,
-    title: '3',
-    category: 'A',
-    time: 13,
-    money: 100000,
-    user: 'user1',
-    imageLink: imageLink,
-    detailText: '세번째 상품입니다.',
-  },
-];
+import { useState } from "react";
+import useApiCall from "../../hooks/useApiCall";
 
 function Main() {
-  const [testData, setTestData] = useState(initTestData);
+  const [loading, testData, error] = useApiCall(
+    "http://localhost:4000/api/board"
+  );
   const [boardData, setBoardData] = useState(null);
+  const [visible, setVisible] = useState(false);
+
+  if (!testData) {
+    return <></>;
+  }
+
+  if (loading) {
+    return <>로딩중...</>;
+  }
+
+  if (error) {
+    return <>에러 : {error}</>;
+  }
+
   const BoardComponents = testData.map((boardData) => {
     return (
       <Board
@@ -63,11 +45,10 @@ function Main() {
     );
   });
 
-  const [visible, setVisible] = useState(false);
   const buttonList = [
-    { title: '홈', color: 'red' },
-    { title: '검색', color: 'blue' },
-    { title: '내글', color: 'green' },
+    { title: "홈", color: "red" },
+    { title: "검색", color: "blue" },
+    { title: "내글", color: "green" },
   ];
   return (
     <div>
@@ -77,7 +58,7 @@ function Main() {
       ) : (
         <Detail
           boardData={boardData}
-          setTestData={setTestData}
+          setTestData={() => {}}
           setBoardData={setBoardData}
           setVisible={setVisible}
         />
@@ -92,7 +73,7 @@ function Main() {
         <Write
           boardData={boardData}
           setBoardData={setBoardData}
-          setData={setTestData}
+          setData={() => {}}
           setVisible={setVisible}
         />
       ) : null}
