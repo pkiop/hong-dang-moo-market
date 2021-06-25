@@ -65,10 +65,11 @@ function Main() {
       )}
 
       <Footer buttonList={buttonList} />
-      <button onClick={() => setVisible((state) => !state)}>+</button>
-      <button className="closeButton" onClick={() => setVisible(!visible)}>
-        -
-      </button>
+      <button
+        className="open-button"
+        onClick={() => setVisible((state) => !state)}
+      ></button>
+
       {visible ? (
         <Write
           boardData={boardData}
