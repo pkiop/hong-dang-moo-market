@@ -1,0 +1,10 @@
+.input-wrapper {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  & > div {
+    font-size: 20px;
+  }
+}
