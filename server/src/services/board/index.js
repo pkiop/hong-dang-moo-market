@@ -20,19 +20,38 @@ const getBoardById = async (boardId) => {
   }
 };
 
-const addBoard = async ({ boardId, title, content }) => {
+const addBoard = async ({ title, contents, price, category, imageLink }) => {
   try {
-    await BoardModel.create({ id: boardId, title, content }).exec();
+    await BoardModel.create({
+      title,
+      contents,
+      price,
+      category,
+      imageLink,
+    });
   } catch (err) {
     console.error(err);
     return {};
   }
 };
 
-const updateBoard = async ({ boardId, title, content }) => {
+const updateBoard = async ({
+  boardId,
+  title,
+  contents,
+  price,
+  category,
+  imageLink,
+}) => {
   try {
-    const query = { id: boardId };
-    await BoardModel.updateOne(query, { title, content }).exec();
+    const query = { _id: boardId };
+    await BoardModel.updateOne(query, {
+      title,
+      contents,
+      price,
+      category,
+      imageLink,
+    }).exec();
   } catch (err) {
     console.error(err);
     return {};

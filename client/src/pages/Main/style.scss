@@ -1,8 +1,3 @@
-.close-button {
-  position: fixed;
-  bottom: 30px;
-}
-
 .board-components-wrapper {
   margin: 0 30px;
 }
@@ -20,6 +15,6 @@
   align-items: center;
   background-color: #bd420d;
   &::before {
-    content: "+";
+    content: '+';
   }
 }

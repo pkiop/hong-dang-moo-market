@@ -1,9 +1,13 @@
-import "./style.scss";
-function Input({ title, setValue, inputType = "text" }) {
+import './style.scss';
+function Input({ title, value, setValue, inputType = 'text' }) {
   return (
-    <div class="input-wrapper">
+    <div className='input-wrapper'>
       <div>{title} : </div>
-      <input type={inputType} onChange={(e) => setValue(e.target.value)} />
+      <input
+        type={inputType}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </div>
   );
 }

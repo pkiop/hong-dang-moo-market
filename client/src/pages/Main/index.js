@@ -10,7 +10,7 @@ import { useState } from "react";
 import useApiCall from "../../hooks/useApiCall";
 
 function Main() {
-  const [loading, testData, error] = useApiCall(
+  const [loading, testData, error, fetchData] = useApiCall(
     "http://localhost:4000/api/board"
   );
   const [boardData, setBoardData] = useState(null);
@@ -31,11 +31,11 @@ function Main() {
   const BoardComponents = testData.map((boardData) => {
     return (
       <Board
-        key={boardData.id}
+        key={boardData._id}
         title={boardData.title}
         category={boardData.category}
         time={boardData.time}
-        money={boardData.money}
+        price={boardData.price}
         user={boardData.user}
         imageLink={boardData.imageLink}
         setBoardData={() => {
@@ -76,6 +76,7 @@ function Main() {
           setBoardData={setBoardData}
           setData={() => {}}
           setVisible={setVisible}
+          fetchData={fetchData}
         />
       ) : null}
     </div>
