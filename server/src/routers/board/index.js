@@ -19,22 +19,28 @@ router.post('/', async (req, res) => {
   await addBoard({
     boardId: req.body.id,
     title: req.body.title,
-    content: req.body.content,
+    contents: req.body.contents,
+    price: req.body.price,
+    category: req.body.category,
+    imageLink: req.body.imageLink,
   });
   res.send('입력 완료');
 });
 
 router.put('/', async (req, res) => {
   await updateBoard({
-    boardId: req.body.id,
+    boardId: req.body._id,
     title: req.body.title,
-    content: req.body.content,
+    contents: req.body.contents,
+    price: req.body.price,
+    category: req.body.category,
+    imageLink: req.body.imageLink,
   });
   res.send('수정 완료');
 });
 
 router.delete('/', async (req, res) => {
-  await deleteBoard({ boardId: req.body.id });
+  await deleteBoard({ boardId: req.body._id });
   res.send('삭제 완료');
 });
 

@@ -10,11 +10,11 @@ function useApiCall(url) {
     setLoading(true);
     try {
       const response = await axios.get(url);
-      setLoading(false);
       setPayload(response.data);
     } catch (error) {
-      setLoading(false);
       setError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -22,7 +22,7 @@ function useApiCall(url) {
     fetchData();
   }, [url]);
 
-  return [loading, payload, error];
+  return [loading, payload, error, fetchData];
 }
 
 export default useApiCall;
