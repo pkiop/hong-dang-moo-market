@@ -1,17 +1,17 @@
-import Board from "../../components/Board";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import Write from "../../components/Write";
-import Detail from "../../components/Detail";
+import Board from '../../components/Board';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Write from '../../components/Write';
+import Detail from '../../components/Detail';
 
-import "./style.scss";
+import './style.scss';
 
-import { useState } from "react";
-import useApiCall from "../../hooks/useApiCall";
+import { useState } from 'react';
+import useApiCall from '../../hooks/useApiCall';
 
 function Main() {
   const [loading, testData, error, fetchData] = useApiCall(
-    "http://localhost:4000/api/board"
+    'http://localhost:4000/api/board'
   );
   const [boardData, setBoardData] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -45,16 +45,21 @@ function Main() {
     );
   });
 
+  const goToHome = () => {
+    setBoardData(null);
+    setVisible(false);
+  };
+
   const buttonList = [
-    { title: "홈", color: "red" },
-    { title: "검색", color: "blue" },
-    { title: "내글", color: "green" },
+    { title: '홈', color: 'red', onClick: goToHome },
+    { title: '검색', color: 'blue', onClick: () => {} },
+    { title: '내글', color: 'green', onClick: () => {} },
   ];
   return (
     <div>
       <Header />
       {boardData === null ? (
-        <div className="board-components-wrapper">{BoardComponents}</div>
+        <div className='board-components-wrapper'>{BoardComponents}</div>
       ) : (
         <Detail
           boardData={boardData}
@@ -66,7 +71,7 @@ function Main() {
 
       <Footer buttonList={buttonList} />
       <button
-        className="open-button"
+        className='open-button'
         onClick={() => setVisible((state) => !state)}
       ></button>
 

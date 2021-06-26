@@ -5,15 +5,16 @@ function Footer({ buttonList }) {
   const Buttons = buttonList.map((el) => {
     return (
       <button
-        className="footerButton"
+        className='footerButton'
         key={el.title}
         style={{ backgroundColor: el.color }}
+        onClick={el.onClick}
       >
         {el.title}
       </button>
     );
   });
-  return <div className="footer">{Buttons}</div>;
+  return <div className='footer'>{Buttons}</div>;
 }
 
 export default Footer;
