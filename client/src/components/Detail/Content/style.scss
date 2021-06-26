@@ -1,0 +1,26 @@
+.detail-content {
+  background-color: #c4c4c4;
+  padding: 50px;
+  & > .content-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  & > .content-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttons > button {
+    margin: 0 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+
+    background-color: #52ff00;
+  }
+}

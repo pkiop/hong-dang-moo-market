@@ -1,39 +1,18 @@
 import './style.scss';
 import Board from '../Board';
-function Detail({ boardData, setTestData, setBoardData, setVisible }) {
-  const updateBoardData = () => {
-    setVisible(true);
-  };
-
-  const deleteBoardData = () => {
-    const id = boardData.id;
-    setTestData((state) => {
-      const newState = state.filter((board) => {
-        return id !== board.id;
-      });
-      setBoardData(null);
-      return newState;
-    });
-  };
-
+import Content from './Content';
+function Detail({ boardData, setVisible }) {
   return (
-    <div className="board-components-wrapper">
+    <div className='board-components-wrapper'>
       <Board
         title={boardData.title}
         category={boardData.category}
         time={boardData.time}
-        money={boardData.money}
+        price={boardData.price}
         user={boardData.user}
         imageLink={boardData.imageLink}
       />
-      <div className="detail">
-        <div>글 내용</div>
-        <div>{boardData.detailText}</div>
-        <div className="buttons">
-          <button onClick={updateBoardData}>수정하기</button>
-          <button onClick={deleteBoardData}>삭제하기</button>
-        </div>
-      </div>
+      <Content setVisible={setVisible} content={boardData.contents} />
     </div>
   );
 }
