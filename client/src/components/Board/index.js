@@ -1,10 +1,10 @@
-import './style.scss';
+import "./style.scss";
 
 function Board({
   title,
   category,
   time,
-  money,
+  price,
   user,
   imageLink,
   setBoardData,
@@ -21,7 +21,7 @@ function Board({
           <div className="time">{time}</div>
         </div>
         <div className="money-user">
-          <div className="money">{money}</div>
+          <div className="money">{price}</div>
           <div className="user">{user}</div>
         </div>
       </div>
