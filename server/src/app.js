@@ -8,6 +8,10 @@ const { connect: dbConnect } = require('./models');
 
 dbConnect();
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -21,7 +25,7 @@ app.use(express.static('public'));
 app.use('/api', router);
 
 app.get('/', (req, res) => {
-  res.send('my server');
+  res.render('index.html');
 });
 
 app.listen(port, () => {
