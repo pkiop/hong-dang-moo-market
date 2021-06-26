@@ -7,8 +7,17 @@ const BoardSchema = new Schema({
   title: {
     type: String,
   },
-  content: {
+  contents: {
     type: String,
+  },
+  category: {
+    type: String,
+  },
+  imageLink: {
+    type: String,
+  },
+  price: {
+    type: Number,
   },
 });
 
