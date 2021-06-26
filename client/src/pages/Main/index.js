@@ -16,12 +16,29 @@ function Main() {
   const [boardData, setBoardData] = useState(null);
   const [visible, setVisible] = useState(false);
 
+  const goToHome = () => {
+    setBoardData(null);
+    setVisible(false);
+  };
+
+  const buttonList = [
+    { title: '홈', color: 'red', onClick: goToHome },
+    { title: '검색', color: 'blue', onClick: () => {} },
+    { title: '내글', color: 'green', onClick: () => {} },
+  ];
+
   if (!testData) {
     return <></>;
   }
 
   if (loading) {
-    return <>로딩중...</>;
+    return (
+      <>
+        <Header />
+        로딩중...
+        <Footer buttonList={buttonList} />
+      </>
+    );
   }
 
   if (error) {
@@ -45,16 +62,6 @@ function Main() {
     );
   });
 
-  const goToHome = () => {
-    setBoardData(null);
-    setVisible(false);
-  };
-
-  const buttonList = [
-    { title: '홈', color: 'red', onClick: goToHome },
-    { title: '검색', color: 'blue', onClick: () => {} },
-    { title: '내글', color: 'green', onClick: () => {} },
-  ];
   return (
     <div>
       <Header />
