@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import './style.scss';
+import React, { useState } from "react";
+import Input from "./Input";
+import "./style.scss";
 
-const imageLink =
-  'http://itimg.chosun.com/sitedata/image/202001/14/2020011400634_0.jpg';
 function Write({ setData, setBoardData, boardData, setVisible }) {
-  const [title, setTitle] = useState(setData.title ?? '');
+  const [title, setTitle] = useState(setData.title ?? "");
+  const [imageLink, setImageLink] = useState(setData.imageLink ?? "");
+  const [category, setCategory] = useState(setData.category ?? "");
+  const [price, setPrice] = useState(setData.price ?? "");
+  const [content, setContent] = useState(setData.content ?? "");
 
   const updateBoardData = () => {
     setData((state) => {
@@ -27,34 +30,50 @@ function Write({ setData, setBoardData, boardData, setVisible }) {
   if (boardData === null) {
     return (
       <div className="write">
-        <span className="fixed">글 제목</span>
-        <div className="item">
-          글 제목 :{' '}
-          <input
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
+        <div className="inputs-wrapper">
+          <Input title={"글 제목"} setValue={setTitle} />
+          <Input title={"사진 링크"} setValue={setImageLink} />
+          <Input title={"카테고리"} setValue={setCategory} />
+          <Input title={"가격"} setValue={setPrice} inputType={"number"} />
+          <Input title={"글 내용"} setValue={setContent} />
+          <div className="button-wrapper">
+            <button
+              className="green"
+              onClick={() => setData((state) => [...state, test])}
+            >
+              작성하기
+            </button>
+            <button
+              className="red"
+              onClick={() => {
+                setVisible(false);
+              }}
+            >
+              취소하기
+            </button>
+          </div>
         </div>
-        <button onClick={() => setData((state) => [...state, test])}>
-          Add
-        </button>
       </div>
     );
   } else {
     // 여기는 수정하기
     return (
       <div className="write">
-        <span className="fixed">글 제목</span>
-        <div className="item">
-          글 제목 :{' '}
-          <input
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
+        <div className="inputs-wrapper">
+          <Input title={"글 제목"} setValue={setTitle} />
+          <Input title={"사진 링크"} setValue={setImageLink} />
+          <Input title={"카테고리"} setValue={setCategory} />
+          <Input title={"가격"} setValue={setPrice} inputType={"number"} />
+          <Input title={"글 내용"} setValue={setContent} />
+          <div className="button-wrapper">
+            <button className="green" onClick={updateBoardData}>
+              수정하기
+            </button>
+            <button className="red" onClick={updateBoardData}>
+              삭제하기
+            </button>
+          </div>
         </div>
-        <button onClick={updateBoardData}>Update</button>
       </div>
     );
   }

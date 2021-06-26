@@ -1,25 +1,27 @@
 .write {
   position: fixed;
-  left: 20px;
-  top: 20px;
+  left: calc(50% - 45%);
+  top: calc(50% - 40%);
+  width: 90%;
+  height: 80%;
 
-  & > div {
-    display: block;
-  }
-  background-color: green;
+  background-color: #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-body {
-  margin: 0;
-}
-
-.fixed {
-  position: fixed;
-  top: 30px;
-  left: 40px;
+.inputs-wrapper {
+  background-color: #d8b6b6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .item {
+  display: flex;
   position: relative;
   margin-top: 40px;
   margin-left: 40px;
@@ -28,14 +30,21 @@ body {
   background: yellow;
 }
 
-.A {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
+.button-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px;
 
-.B {
-  position: absolute;
-  top: 40px;
-  left: 40px;
+  & > button {
+    margin: 0 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+  & > .green {
+    background-color: #52ff00;
+  }
+  & > .red {
+    background-color: #ec5aba;
+  }
 }
