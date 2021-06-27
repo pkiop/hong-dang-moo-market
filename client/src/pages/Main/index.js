@@ -16,29 +16,12 @@ function Main() {
   const [boardData, setBoardData] = useState(null);
   const [visible, setVisible] = useState(false);
 
-  const goToHome = () => {
-    setBoardData(null);
-    setVisible(false);
-  };
-
-  const buttonList = [
-    { title: '홈', color: 'red', onClick: goToHome },
-    { title: '검색', color: 'blue', onClick: () => {} },
-    { title: '내글', color: 'green', onClick: () => {} },
-  ];
-
   if (!testData) {
     return <></>;
   }
 
   if (loading) {
-    return (
-      <>
-        <Header />
-        로딩중...
-        <Footer buttonList={buttonList} />
-      </>
-    );
+    return <>로딩중...</>;
   }
 
   if (error) {
@@ -64,7 +47,6 @@ function Main() {
 
   return (
     <div>
-      <Header />
       {boardData === null ? (
         <div className='board-components-wrapper'>{BoardComponents}</div>
       ) : (
@@ -76,7 +58,6 @@ function Main() {
         />
       )}
 
-      <Footer buttonList={buttonList} />
       <button
         className='open-button'
         onClick={() => setVisible((state) => !state)}
