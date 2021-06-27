@@ -21,7 +21,7 @@ function Board({
           <div className='time'>{time}</div>
         </div>
         <div className='money-user'>
-          <div className='money'>{price}</div>
+          <div className='money'>{price}원</div>
           <div className='user'>{user}</div>
         </div>
       </div>
