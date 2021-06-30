@@ -37,8 +37,8 @@ router.put('/', async (req, res) => {
   res.send('수정 완료');
 });
 
-router.delete('/', async (req, res) => {
-  await deleteCategory({ categoryId: req.body._id });
+router.delete('/:id', async (req, res) => {
+  await deleteCategory({ categoryId: req.params.id });
   res.send('삭제 완료');
 });
 

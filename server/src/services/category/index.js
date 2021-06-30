@@ -45,7 +45,7 @@ const updateCategory = async ({ categoryId, title }) => {
 
 const deleteCategory = async ({ categoryId }) => {
   try {
-    const query = { id: categoryId };
+    const query = { _id: categoryId };
     await CategoryModel.deleteOne(query).exec();
   } catch (err) {
     console.error(err);
