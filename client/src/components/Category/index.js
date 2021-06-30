@@ -1,8 +1,8 @@
 import './style.scss';
 
-function Category({ title }) {
+function Category({ title, onClick }) {
   return (
-    <div className='category-block'>
+    <div onClick={onClick} className='category-block'>
       <div>{title}</div>
     </div>
   );
