@@ -1,0 +1,14 @@
+.category-list {
+  position: relative;
+  background-color: #c4c4c4;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 0;
+
+  & > .category-list__title {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 25px;
+  }
+}

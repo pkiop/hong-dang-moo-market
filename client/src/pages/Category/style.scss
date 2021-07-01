@@ -1,2 +1,7 @@
 .category-page {
+  & > .category-list {
+    margin-top: 25px;
+    margin: 25px 20px 0px;
+  }
+  margin-bottom: 50px; // footer + 10px만큼 띄우기
 }
