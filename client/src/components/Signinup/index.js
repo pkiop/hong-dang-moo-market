@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import axios from 'axios';
 
 function Signinup({ isSignin }) {
   const usernameRef = useRef('');
@@ -7,10 +8,32 @@ function Signinup({ isSignin }) {
 
   const title = isSignin ? '로그인' : '회원가입';
 
-  const clickLoginBtnHandler = () => {
-    console.log('usernameRef : ', usernameRef.current.value);
-    console.log('passwordRef: ', passwordRef.current.value);
-    console.log('locationRef: ', locationRef.current.value);
+  const clickLoginBtnHandler = async () => {
+    if (isSignin) {
+      try {
+        const userInfo = await axios.post(
+          'http://localhost:4000/api/auth/login',
+          {
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+          }
+        );
+        console.log('userInfo : ', userInfo);
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      try {
+        const userInfo = await axios.post('http://localhost:4000/api/auth', {
+          username: usernameRef.current.value,
+          password: passwordRef.current.value,
+          location: locationRef.current.value,
+        });
+        console.log('userInfo(signup) : ', userInfo);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
   return (
     <div class='container-sm mt-3 '>
@@ -37,7 +60,7 @@ function Signinup({ isSignin }) {
           ref={passwordRef}
         />
       </div>
-      {isSignin && (
+      {!isSignin && (
         <div class='row mb-3'>
           <div class='col'>
             <label class='form-label'>Location</label>
