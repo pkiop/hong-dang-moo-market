@@ -1,3 +1,4 @@
+const User = require('../../models/user');
 const validUser = async (req, res, next) => {
   // 로그인이 되어있는지, 접근해도 되는 사용자인지 체크하는 로직
   // POST: login 로직을 보면 req.session.userID = user._id 로 로그인 성공했을 때 세션에 userId를 담아준다.

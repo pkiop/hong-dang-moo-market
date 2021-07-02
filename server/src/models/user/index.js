@@ -47,4 +47,4 @@ userSchema.methods.toJSON = function () {
   return obj;
 };
 
-module.exports = model('board', userSchema);
+module.exports = model('user', userSchema);
