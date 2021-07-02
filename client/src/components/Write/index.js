@@ -13,7 +13,7 @@ function Write({ boardData, setVisible, fetchData }) {
   const history = useHistory();
 
   const createBoardData = async () => {
-    await axios.post('http://localhost:4000/api/board', {
+    await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
       title,
       imageLink,
       category,
@@ -25,7 +25,7 @@ function Write({ boardData, setVisible, fetchData }) {
   };
 
   const updateBoardData = async () => {
-    await axios.put('http://localhost:4000/api/board', {
+    await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, {
       _id: boardData._id, // 어떤 걸 수정해야 될 지 알려주어야 함
       title,
       imageLink,
@@ -40,7 +40,9 @@ function Write({ boardData, setVisible, fetchData }) {
 
   const deleteBoardData = async () => {
     // 1. 삭제하기 api 호출
-    await axios.delete(`http://localhost:4000/api/board/${boardData._id}`);
+    await axios.delete(
+      `${process.env.REACT_APP_API_SERVER}/api/board/${boardData._id}`
+    );
     // 2. Write 안보이게 하기
     setVisible(false);
     // 3. fetchData 호출

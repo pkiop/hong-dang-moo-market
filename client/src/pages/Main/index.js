@@ -12,7 +12,7 @@ function Main() {
   const history = useHistory();
   const location = useLocation(); // 현재 url에서 id값을 얻기 위해
   const [loading, testData, error, fetchData] = useApiCall(
-    'http://localhost:4000/api/board'
+    `${process.env.REACT_APP_API_SERVER}/api/board`
   );
 
   const [visible, setVisible] = useState(false);
