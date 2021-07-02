@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function CategoryPage() {
   const [loading, categoryData, error, fetchData] = useApiCall(
-    'http://localhost:4000/api/category'
+    `${process.env.REACT_APP_API_SERVER}/api/category`
   );
   const [selectedCategory, setSelectedCategory] = useState(null);
 

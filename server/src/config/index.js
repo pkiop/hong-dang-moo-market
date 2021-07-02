@@ -8,12 +8,9 @@ const dbConfig = {
   port: process.env.DB_PORT,
 };
 
-console.log(dbConfig);
-
-
 const getDBUri = () => {
   const localUri = `mongodb://${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
   return localUri;
 };
 
-module.exports = { getDBUri }
+module.exports = { getDBUri };

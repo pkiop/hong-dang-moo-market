@@ -16,14 +16,14 @@ function CategoryInput({
   }, [selectedCategory]); // selectedCategory가 바뀌었을 때 inputValue를 update해줌
 
   const addCategory = async () => {
-    await axios.post('http://localhost:4000/api/category', {
+    await axios.post(`${process.env.REACT_APP_API_SERVER}/api/category`, {
       title: inputValue,
     });
     categoryFetch();
   };
 
   const updateCategory = async () => {
-    await axios.put('http://localhost:4000/api/category', {
+    await axios.put(`${process.env.REACT_APP_API_SERVER}/api/category`, {
       _id: selectedCategory._id,
       title: inputValue,
     });
@@ -32,7 +32,7 @@ function CategoryInput({
 
   const deleteCategory = async () => {
     await axios.delete(
-      `http://localhost:4000/api/category/${selectedCategory._id}`
+      `${process.env.REACT_APP_API_SERVER}/api/category/${selectedCategory._id}`
     );
     setSelectedCategory(null);
     categoryFetch();

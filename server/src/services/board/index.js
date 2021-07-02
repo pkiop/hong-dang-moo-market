@@ -60,7 +60,7 @@ const updateBoard = async ({
 
 const deleteBoard = async ({ boardId }) => {
   try {
-    const query = { id: boardId };
+    const query = { _id: boardId };
     await BoardModel.deleteOne(query).exec();
   } catch (err) {
     console.error(err);
