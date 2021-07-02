@@ -20,6 +20,23 @@ app.use(
 );
 app.use(cors());
 
+// cookie에 전달되어 오는 정보를 req.session을 통해 사용할 수 있도록 파싱해줌
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+// front에는 user 정보를 cookie에 담고
+// back에는 user 정보를 session에 담아 쓰기 위한 설정
+const cookieSession = require('cookie-session');
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['secretValue'],
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
+  })
+);
+
 app.use(express.static('public'));
 
 app.use('/api', router);
