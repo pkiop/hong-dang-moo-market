@@ -7,7 +7,6 @@ function Auth() {
       <Route path='/auth/signin'>
         <Signinup isSignin />
       </Route>
-      <Route path='/auth/signout'>로그아웃</Route>
       <Route path='/auth/signup'>
         <Signinup isSignin={false} />
       </Route>
