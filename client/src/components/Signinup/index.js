@@ -1,10 +1,15 @@
-import { useRef } from 'react';
+import { useRef, useContext, useState } from 'react';
 import axios from 'axios';
+import { UserContext } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 function Signinup({ isSignin }) {
+  const { dispatch } = useContext(UserContext);
+  const history = useHistory();
   const usernameRef = useRef('');
   const passwordRef = useRef('');
   const locationRef = useRef('');
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const title = isSignin ? '로그인' : '회원가입';
 
@@ -12,83 +17,97 @@ function Signinup({ isSignin }) {
     if (isSignin) {
       try {
         const userInfo = await axios.post(
-          'http://localhost:4000/api/auth/login',
+          `${process.env.REACT_APP_API_SERVER}/api/auth/login`,
           {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
           }
         );
-        console.log('userInfo : ', userInfo);
+        dispatch({ type: 'signin', payload: userInfo.data.user });
+        setErrorMsg(null);
+        history.push('/');
       } catch (e) {
+        setErrorMsg(e.response.data.message);
         console.error(e);
       }
     } else {
       try {
-        const userInfo = await axios.post('http://localhost:4000/api/auth', {
-          username: usernameRef.current.value,
-          password: passwordRef.current.value,
-          location: locationRef.current.value,
-        });
-        console.log('userInfo(signup) : ', userInfo);
+        const userInfo = await axios.post(
+          `${process.env.REACT_APP_API_SERVER}/api/auth`,
+          {
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+            location: locationRef.current.value,
+          }
+        );
+        dispatch({ type: 'signin', payload: userInfo.data.user });
+        history.push('/');
+        setErrorMsg(null);
       } catch (e) {
+        setErrorMsg(e.response.data.message);
         console.error(e);
       }
     }
   };
   return (
-    <div class='container-sm mt-3 '>
-      <div class='row'>
-        <div class='col text-center'>
+    <div className='container-sm mt-3 '>
+      <div className='row'>
+        <div className='col text-center'>
           <h1>{title}</h1>
         </div>
       </div>
-      <div class='mb-3'>
-        <label class='form-label'>Username</label>
+      <div className='mb-3'>
+        <label className='form-label'>Username</label>
         <input
           type='text'
-          class='form-control'
+          className='form-control'
           placeholder='Username'
           ref={usernameRef}
         />
       </div>
-      <div class='mb-3'>
-        <label class='form-label lg'>Password</label>
+      <div className='mb-3'>
+        <label className='form-label lg'>Password</label>
         <input
-          type='text'
-          class='form-control'
-          placeholder='Another input placeholder'
+          type='password'
+          className='form-control'
+          placeholder='password'
           ref={passwordRef}
         />
       </div>
       {!isSignin && (
-        <div class='row mb-3'>
-          <div class='col'>
-            <label class='form-label'>Location</label>
+        <div className='row mb-3'>
+          <div className='col'>
+            <label className='form-label'>Location</label>
             <select
-              class='form-select'
+              className='form-select'
               aria-label='Default select example'
               ref={locationRef}
             >
-              <option selected value=''>
-                Select Location
-              </option>
+              <option>Select Location</option>
               <option value='kr'>한국</option>
               <option value='us'>미국</option>
             </select>
           </div>
         </div>
       )}
-      <div class='row'>
-        <div class='col text-center'>
+      <div className='row mb-5'>
+        <div className='col text-center'>
           <button
             type='button'
-            class='btn btn-primary justify-contents-center'
+            className='btn btn-primary justify-contents-center'
             onClick={clickLoginBtnHandler}
           >
             {title}
           </button>
         </div>
       </div>
+      {errorMsg && (
+        <div className='row'>
+          <div className='col text-center'>
+            <span className='badge bg-danger'>{errorMsg}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
