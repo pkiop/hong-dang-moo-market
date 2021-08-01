@@ -1,7 +1,7 @@
 import Board from '../../components/Board';
 import Write from '../../components/Write';
 import Detail from '../../components/Detail';
-import { Route, useHistory, useLocation } from 'react-router';
+import { Route, useHistory, useLocation } from 'react-router-dom';
 
 import './style.scss';
 

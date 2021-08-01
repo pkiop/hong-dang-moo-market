@@ -26,6 +26,7 @@ app.use(cookieParser());
 
 // front에는 user 정보를 cookie에 담고
 // back에는 user 정보를 session에 담아 쓰기 위한 설정
+// req.session.userID = userId
 const cookieSession = require('cookie-session');
 app.use(
   cookieSession({
