@@ -4,6 +4,7 @@
 
 ```
 cd client
+mv .envsample .env
 npm install
 npm run start
 ```
